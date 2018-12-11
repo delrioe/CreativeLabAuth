@@ -3,7 +3,7 @@ var router = express.Router();
 var expressSession = require('express-session');
 
 var mongoose = require('mongoose');
-var Items = mongoose.model('Items');
+var Comments = mongoose.model('Comments');
 
 
 var users = require('../controllers/users_controller');
@@ -64,10 +64,10 @@ router.get('/user/profile', users.getUserProfile);
 
 
 
-// //THIS IS FROM THE ITEMS
+// //THIS IS FROM THE ITEMS---------------------------------------------------------------------
 
 router.param('candidate', function(req, res, next, id) {
-    var query = Items.findById(id);
+    var query = Comments.findById(id);
     query.exec(function(err, candidate) {
         if (err) { return next(err); }
         if (!candidate) { return next(new Error("can't find candidate")); }
@@ -95,7 +95,7 @@ router.delete('/voting/:candidate', function(req, res) {
 
 router.get('/voting', function(req, res, next) {
     console.log("Get Route");
-    Items.find(function(err, candidates) {
+    Comments.find(function(err, candidates) {
         if (err) { console.log("Error"); return next(err); }
         res.json(candidates);
         console.log("res.json Get Route");
@@ -105,7 +105,7 @@ router.get('/voting', function(req, res, next) {
 
 router.post('/voting', function(req, res, next) {
     console.log("Post Route");
-    var candidate = new Items(req.body);
+    var candidate = new Comments(req.body);
     console.log("Post Route");
     console.log(candidate);
     candidate.save(function(err, candidate) {

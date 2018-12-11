@@ -38,9 +38,9 @@
         <div class="block-form">
             <form ng-submit="addCandidate()">
                 <div class="block-inputs">
-                    <input type="text" placeholder="Product Name" ng-model="formContent"></input><br>
-                    <input type="text" placeholder="Price" ng-model="priceContent"></input><br>
-                    <input type="text" placeholder="Picture URL" ng-model="pictureURLContent"></input>
+                    <!--<input type="text" placeholder="Username" ng-model="formContent"></input><br>-->
+                    <input type="text" placeholder="Date" ng-model="dateContent"></input><br>
+                    <input type="text" placeholder="Comment" ng-model="commentContent"></input>
                 </div>
                 <div class="block-button-submit">
                     <button type="submit" class="button">Add Product</button>
@@ -51,11 +51,14 @@
         <h1>Current Products</h1>
         <div class="current-Products">
 
-            <div ng-repeat="candidate in candidates | orderBy:['Name','Price', 'Sales']">
+            <div ng-repeat="candidate in candidates | orderBy:['Username', 'Comment']">
                 <div class="break"></div>
                 <div class="each-element">
                     <span class="glyphicon glyphicon-remove" ng-click="delete(candidate)"></span>
-                    <p>{{candidate.Name}} Price {{candidate.Price}} Ordered {{candidate.Sales}}</p> <img class="photo" src="{{candidate.PictureURL}}" height="100" width="100">
+                    <div class="Comment-div">
+                        <p>{{candidate.Username}}</p> <br>
+                        <p>  {{candidate.Comment}}</p>
+                    </div>
                 </div>
                 <div class="break"></div>
 

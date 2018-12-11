@@ -10,15 +10,6 @@ angular.module('myApp', []).controller('myController', ['$scope', '$http',
             $scope.error = data;
         });
 
-        // $scope.addCandidate = function() {
-        //         var newObj = { Name: $scope.formContent, Sales: 0, PictureURL: $scope.pictureURLContent, Price: $scope.priceContent };
-        //         $scope.create(newObj);
-        //         $scope.priceContent = '';
-        //         $scope.pictureURLContent = '';
-        //         $scope.formContent = '';
-        //         console.log("ADDING A NEW CANDIDTATE");
-        //     }
-
     }
 
 
@@ -50,20 +41,20 @@ angular.module('myApp', []).controller('myController', ['$scope', '$http',
             });
         }
 
-        $scope.upvote = function(candidate) {
-            return $http.put('/voting/' + candidate._id + '/upvote')
-                .success(function(data) {
-                    console.log("upvote worked");
-                    candidate.upvotes += 1;
-                });
-        };
+        // $scope.upvote = function(candidate) {
+        //     return $http.put('/voting/' + candidate._id + '/upvote')
+        //         .success(function(data) {
+        //             console.log("upvote worked");
+        //             candidate.upvotes += 1;
+        //         });
+        // };
 
         $scope.addCandidate = function() {
-            var newObj = { Name: $scope.formContent, Sales: 0, PictureURL: $scope.pictureURLContent, Price: $scope.priceContent };
+            var newObj = { Username: $scope.formContent, Comment: $scope.commentContent, Date: $scope.dateContent };
             $scope.create(newObj);
-            $scope.priceContent = '';
-            $scope.pictureURLContent = '';
             $scope.formContent = '';
+            $scope.commentContent = '';
+            $scope.dateContent = '';
         }
 
         $scope.incrementUpvotes = function(candidate) {
@@ -71,7 +62,7 @@ angular.module('myApp', []).controller('myController', ['$scope', '$http',
         };
 
         $scope.delete = function(candidate) {
-            console.log("Deleting Name " + candidate.Name + " ID " + candidate._id);
+            console.log("Deleting Name " + candidate.Username + " ID " + candidate._id);
             $http.delete('/voting/' + candidate._id)
                 .success(function(data) {
                     console.log("delete worked");

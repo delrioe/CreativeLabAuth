@@ -11,7 +11,7 @@ mongoose.connect('mongodb://localhost/auth', { useNewUrlParser: true });
 require('./models/users_model.js');
 
 var mongoose2 = require('mongoose');
-mongoose2.connect('mongodb://localhost/itemsDB', { useMongoClient: true });
+mongoose2.connect('mongodb://localhost/commentsDB', { useMongoClient: true });
 require('./models/users_model.js');
 
 
