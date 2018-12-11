@@ -1,0 +1,80 @@
+<!doctype html>
+<html ng-app="myApp">
+
+<head>
+    <title>User Login and Sessions</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+    <!--<script src="javascripts/my_app.js"></script>-->
+</head>
+
+<body>
+    <div ng-controller="myController">
+        <h2 id="welcomeText">Welcome. You are Logged In as
+            <%= username %>
+        </h2>
+        <a id="logoutLink" href="/logout">logout</a>
+        <a id="editLink" href="/user">Edit User</a>
+        <p class="place-code">I have to do something Here
+        </p>
+    </div>
+    <hr>
+    <span id="indexMsg">
+        <%= msg %>
+    </span>
+    <hr>
+    <span id="colorText">
+    Color
+        <%= color %>
+      </span>
+    <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+    <script src="/javascripts/my_app.js"></script>
+
+
+
+
+    <div ng-controller="MainCtrl">
+        <h1> Administrative Interface </h1>
+
+        <div class="block-form">
+            <form ng-submit="addCandidate()">
+                <div class="block-inputs">
+                    <input type="text" placeholder="Product Name" ng-model="formContent"></input><br>
+                    <input type="text" placeholder="Price" ng-model="priceContent"></input><br>
+                    <input type="text" placeholder="Picture URL" ng-model="pictureURLContent"></input>
+                </div>
+                <div class="block-button-submit">
+                    <button type="submit" class="button">Add Product</button>
+                </div>
+            </form>
+        </div>
+
+        <h1>Current Products</h1>
+        <div class="current-Products">
+
+            <div ng-repeat="candidate in candidates | orderBy:['Name','Price', 'Sales']">
+                <div class="break"></div>
+                <div class="each-element">
+                    <span class="glyphicon glyphicon-remove" ng-click="delete(candidate)"></span>
+                    <p>{{candidate.Name}} Price {{candidate.Price}} Ordered {{candidate.Sales}}</p> <img class="photo" src="{{candidate.PictureURL}}" height="100" width="100">
+                </div>
+                <div class="break"></div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+
+</html>
