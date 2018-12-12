@@ -9,7 +9,7 @@
 
 <body>
     <div ng-controller="myController">
-        <h2 id="welcomeText">Welcome. You are Logged In as
+        <h2 id="welcomeText">Welcome. You are logged in as
             <%= username %>
         </h2>
         <a id="logoutLink" href="/logout">logout</a>
@@ -33,34 +33,35 @@
 
 
     <div ng-controller="MainCtrl">
-        <h1> Administrative Interface </h1>
+        <h1> Enter a new comment </h1>
 
         <div class="block-form">
             <form ng-submit="addCandidate()">
                 <div class="block-inputs">
-                    <!--<input type="text" placeholder="Username" ng-model="formContent"></input><br>-->
+                    <!--<input type="text" placeholder=<%= username %> ng-model="formContent"></input><br>-->
+                    <input type="text" placeholder="Username" ng-model="formContent"></input>
                     <input type="text" placeholder="Date" ng-model="dateContent"></input><br>
                     <input type="text" placeholder="Comment" ng-model="commentContent"></input>
                 </div>
                 <div class="block-button-submit">
-                    <button type="submit" class="button">Add Product</button>
+                    <button type="submit" class="button">Add Comment</button>
                 </div>
             </form>
         </div>
 
-        <h1>Current Products</h1>
+        <h1>All Comments</h1>
         <div class="current-Products">
-
+    
             <div ng-repeat="candidate in candidates | orderBy:['Username', 'Comment']">
-                <div class="break"></div>
-                <div class="each-element">
-                    <span class="glyphicon glyphicon-remove" ng-click="delete(candidate)"></span>
+                <!--<div class="break"></div>-->
+                <!--<div class="each-element">-->
                     <div class="Comment-div">
-                        <p>{{candidate.Username}}</p> <br>
-                        <p>  {{candidate.Comment}}</p>
+                        <span class="glyphicon glyphicon-remove" ng-click="delete(candidate)"></span>
+                        <h3 id='commentSetup'>{{candidate.Username}} -- {{candidate.Date}}</h3><hr>
+                        <p id='commentText'>{{candidate.Comment}}</p>
                     </div>
-                </div>
-                <div class="break"></div>
+                <!--</div>-->
+                <!--<div class="break"></div>-->
 
             </div>
         </div>
